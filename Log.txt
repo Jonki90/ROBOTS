@@ -32,4 +32,8 @@ And so, the pair kept going. They built the robots body and started on its arm s
 
 09/02/15
 Day nine:
-They started on the arm
+They started on the arm and programmed it.
+
+10/02/15
+Day ten:
+They put on some sensors and programmed the driving mechanism.
