@@ -37,3 +37,11 @@ They started on the arm and programmed it.
 10/02/15
 Day ten:
 They put on some sensors and programmed the driving mechanism.
+
+16/02/15
+Day eleven:
+They didn't get enough sleep, so the did nothing productive that day.
+
+17/02/15
+Day twelve:
+The put the sensores on and programmed the robot. It was a sight.
