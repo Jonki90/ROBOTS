@@ -44,4 +44,27 @@ They didn't get enough sleep, so the did nothing productive that day.
 
 17/02/15
 Day twelve:
-The put the sensores on and programmed the robot. It was a sight.
+They put the sensores on and programmed the robot. It was a sight.
+
+23/02/15
+Day thirteen:
+Nothing much was done that day.
+
+24/02/15
+Day fourteen:
+They made the electromagnet.
+
+02/03/15
+Day fifteen:
+Little tinkering and such.
+
+03/03/15
+Day sixteen:
+Some more tinkering and fixes.
+
+16/03/15
+Day seventeen:
+The one was sick, made some improvements on the bot.
+24/03/15
+Day eighteen:
+And even more fixes and tinkerings.
