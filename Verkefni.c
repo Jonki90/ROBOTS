@@ -20,63 +20,70 @@ task main()
     	bool t = true;
     	int b = 0;
     	while(t == true){
-    		while(b < 10000){
-	    		// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
-			    displayLCDCenteredString(0, "LEFT  CNTR  RGHT");        //  Display   |
-			    displayLCDPos(1,0);                                     //  Sensor    |
-			    displayNextLCDNumber(SensorValue(lineFollowerLEFT));    //  Readings  |
-			    displayLCDPos(1,6);                                     //  to LCD.   |
-			    displayNextLCDNumber(SensorValue(lineFollowerCENTER));  //            |
-			    displayLCDPos(1,12);                                    //  L  C  R   |
-			    displayNextLCDNumber(SensorValue(lineFollowerRIGHT));   //  x  x  x   |
-			    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
+    		bool g = true;
+    		int b = 0;
+    		while(g == true){
+	    		while(b < 32000){
+				    // RIGHT sensor sees dark:
+				    if(SensorValue(lineFollowerRIGHT) > threshold)
+				    {
+				      // counter-steer right:
+				      motor[leftMotor]  = 25;
+				      motor[rightMotor] = -25;
+				    	b++;
+				    }
+				    // CENTER sensor sees dark:
+				    else if(SensorValue(lineFollowerCENTER) > threshold)
+				    {
+				      // go straight
+				      motor[leftMotor]  = 30;
+				      motor[rightMotor] = 30;
+				    	b++;
+				    }
+				    // LEFT sensor sees dark:
+				    else if(SensorValue(lineFollowerLEFT) > threshold)
+				    {
+				      // counter-steer left:
+				      motor[leftMotor]  = -25;
+				      motor[rightMotor] = 25;
+				    	b++;
+				    }
+				    if(vexRT[Btn6D] == 1){
+				    	t = false;
+				    	b = 32000;
+				    }
+			  	}
 
-			    // RIGHT sensor sees dark:
-			    if(SensorValue(lineFollowerRIGHT) > threshold)
-			    {
-			      // counter-steer right:
-			      motor[leftMotor]  = -25;
-			      motor[rightMotor] = 25;
-			    }
-			    // CENTER sensor sees dark:
-			    else if(SensorValue(lineFollowerCENTER) > threshold)
-			    {
-			      // go straight
-			      motor[leftMotor]  = 30;
-			      motor[rightMotor] = 30;
-			    }
-			    // LEFT sensor sees dark:
-			    else if(SensorValue(lineFollowerLEFT) > threshold)
-			    {
-			      // counter-steer left:
-			      motor[leftMotor]  = 25;
-			      motor[rightMotor] = -25;
-			    }
-			    if(vexRT[Btn6D] == 1){
-			    	t = false;
-			    	b = 10000;
-			    }
-		  	}
-		  	while(SensorValue[RightButan] == 0){
-		  		motor[ElctroDeMagnet] = 127;
-		  		motor[TopWheel] = 40;
-		  		if(vexRT[Btn6D] == 1){
-			    	t = false;
-			    	break;
-			    }
-		  	}
-		  	while(SensorValue[LeftButan] == 0){
-		  		motor[ElctroDeMagnet] = 0;
-		  		motor[TopWheel] = -40;
-		  		if(vexRT[Btn6D] == 1){
-			    	t = false;
-			    	break;
-			    }
-		  	}
+				  motor[leftMotor]  = 0;
+				  motor[rightMotor] = 0;
+
+			  	while(SensorValue[RightButan] == 0){
+			  		motor[ElctroDeMagnet] = 127;
+			  		motor[TopWheel] = 20;
+			  		if(vexRT[Btn6D] == 1){
+				    	t = false;
+				    	break;
+				    }
+			  	}
+
+			  	while(SensorValue[LeftButan] == 0){
+			  		motor[ElctroDeMagnet] = 0;
+			  		motor[TopWheel] = -20;
+			  		if(vexRT[Btn6D] == 1){
+				    	t = false;
+				    	break;
+				    }
+			  	}
+			  	motor[ElctroDeMagnet] = 127;
+			  	g = false;
+			  	}
 
 
     	}
     }
+
+
+
 
     if(vexRT[Btn8D] == 1)
     {
